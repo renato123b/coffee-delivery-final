@@ -1,103 +1,153 @@
-# ☕ Coffee Delivery — Integração Full Stack
+# ☕ Coffee Delivery - Integração Full Stack
 
-Este projeto reúne **front-end** e **back-end** do Coffee Delivery para a atividade prática de **Integração Full Stack**, utilizando dados reais de uma API conectada ao banco de dados.
+Este é o projeto completo da aplicação **Coffee Delivery**, unindo **front-end** e **back-end**, com consumo de dados reais de uma **API RESTful** conectada a um banco **PostgreSQL**.
 
----
-
-## 📁 Estrutura do Projeto
-
-coffee-delivery/
-├── g1-frontend-coffee-delivery/ # Front-end (React + Vite + TypeScript)
-└── g2-backend-coffee-delivery/ # Back-end (NestJS + Prisma + PostgreSQL)
-
+> 💻 Projeto Final da disciplina **Desenvolvimento de Software para Web - Integração Full Stack (2025)**.
 
 ---
 
-## 🚀 Como rodar o projeto
+## 🚀 Tecnologias Utilizadas
 
-### Pré-requisitos
-- Node.js (v18+)
-- npm ou yarn
-- PostgreSQL ou conta no [Neon](https://neon.tech/)
-- (Opcional) Insomnia ou Postman para testar a API
+- **Front-end**
+  - [React](https://reactjs.org/)
+  - [TypeScript](https://www.typescriptlang.org/)
+  - [Vite](https://vitejs.dev/)
+  - [Axios](https://axios-http.com/)
+  - [Styled-components](https://styled-components.com/)
+
+- **Back-end**
+  - [NestJS](https://nestjs.com/)
+  - [Prisma ORM](https://www.prisma.io/)
+  - [PostgreSQL](https://www.postgresql.org/)
+  - [Class Validator](https://github.com/typestack/class-validator)
 
 ---
 
-### 📦 Clonando o projeto
+## 📦 Instalação
+
+1. Clone o repositório:
 
 ```bash
 git clone https://github.com/renato123b/coffee-delivery-final.git
 cd coffee-delivery-final
-
-🛠️ Rodando o Back-end
-
+🧱 Backend (NestJS + Prisma)
+1. Acesse o diretório:
+bash
+Copiar
+Editar
 cd g2-backend-coffee-delivery
-
-# Instale as dependências
+2. Instale as dependências:
+bash
+Copiar
+Editar
 npm install
+3. Configure o banco de dados:
+Crie um arquivo .env com sua DATABASE_URL do PostgreSQL:
 
-# Crie o arquivo .env e configure a URL do banco PostgreSQL
-cp .env.example .env
-
-# Gere o cliente Prisma
+env
+Copiar
+Editar
+DATABASE_URL=postgresql://usuario:senha@host:porta/nome_do_banco?sslmode=require
+4. Execute as migrações e gere o client:
+bash
+Copiar
+Editar
 npx prisma generate
-
-# Realize as migrações e conecte ao banco
 npx prisma migrate deploy
-
-# Inicie o servidor
+5. Inicie o servidor:
+bash
+Copiar
+Editar
 npm run start:dev
+O backend estará em http://localhost:3000
 
-💻 Rodando o Front-end
+💻 Frontend (React + Vite)
+1. Acesse o diretório:
+bash
+Copiar
+Editar
 cd ../g1-frontend-coffee-delivery
-
-# Instale as dependências
+2. Instale as dependências:
+bash
+Copiar
+Editar
 npm install
+3. Ajuste a URL base da API:
+No arquivo src/serves/api.ts, altere a URL para:
 
-# Rode o projeto
+ts
+Copiar
+Editar
+export const api = axios.create({
+  baseURL: 'http://localhost:3000',
+})
+4. Inicie a aplicação:
+bash
+Copiar
+Editar
 npm run dev
+O front-end estará em http://localhost:5173
 
-🔁 Funcionalidades Implementadas
-✅ Listagem de cafés a partir da API
+📘 Funcionalidades
+✅ Listar cafés (dados da API)
 
-✅ Visualização dos detalhes de um café
+✅ Visualizar detalhes de um café
 
-✅ Integração com banco de dados via Prisma + PostgreSQL
+✅ (Opcional) Carrinho e finalização de pedido com persistência
 
-✅ Remoção total dos dados mockados do front-end
+✅ Consumo via Axios com remoção total de mocks
 
-✅ Organização em monorepo com front-end e back-end juntos
+✅ Integração completa com banco de dados PostgreSQL
 
-🧪 Testando com Insomnia
-Importe o seguinte endpoint:
+🔁 Endpoints da API
+Cafés (/coffees)
 
+GET /coffees
+
+GET /coffees/:id
+
+POST /coffees
+
+PATCH /coffees/:id
+
+DELETE /coffees/:id
+
+GET /coffees/search
+
+Carrinho (/cart)
+
+POST /cart
+
+GET /cart/:id
+
+POST /cart/:id/items
+
+PATCH /cart/:id/items/:itemId
+
+DELETE /cart/:id/items/:itemId
+
+Checkout (/checkout)
+
+POST /checkout
+
+🧪 Testes com Insomnia
+Você pode testar todos os endpoints com o Insomnia ou Postman.
+Exemplo para listar cafés:
+
+bash
+Copiar
+Editar
 GET http://localhost:3000/coffees
-
-Você pode adicionar cafés via:
-
-POST http://localhost:3000/coffees
-Content-Type: application/json
-
-{
-  "name": "Café Expresso",
-  "description": "Forte e encorpado",
-  "price": 9.5,
-  "imageUrl": "https://exemplo.com/imagem.jpg",
-  "tagIds": []
-}
-
+📁 Estrutura de Pastas
+bash
+Copiar
+Editar
+coffee-delivery/
+├── g1-frontend-coffee-delivery/   # Front-end React
+└── g2-backend-coffee-delivery/    # Back-end NestJS
 ✅ Entrega
-Repositório com front-end e back-end organizados no mesmo projeto, conforme solicitado na atividade.
+O projeto está organizado em monorepo com os dois projetos integrados, pronto para ser testado de ponta a ponta com dados reais da API.
 
-🧠 Tecnologias Utilizadas
-Front-end: React, TypeScript, Vite, Styled-components, Axios
-
-Back-end: NestJS, Prisma ORM, PostgreSQL
-
-Banco de dados: Neon.tech
-
-Testes de API: Insomnia
-
-👨‍💻 Autor
-Renato Carvalho
-
+🧠 Autor
+Desenvolvido por Renatinho — 2025
+GitHub: renato123b
