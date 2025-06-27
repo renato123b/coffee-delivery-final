@@ -30,62 +30,60 @@ Este é o projeto completo da aplicação **Coffee Delivery**, unindo **front-en
 ```bash
 git clone https://github.com/renato123b/coffee-delivery-final.git
 cd coffee-delivery-final
+```
 🧱 Backend (NestJS + Prisma)
+
 1. Acesse o diretório:
-bash
-Copiar
-Editar
+```bash
 cd g2-backend-coffee-delivery
+```
+
 2. Instale as dependências:
-bash
-Copiar
-Editar
+```bash
 npm install
+```
+
 3. Configure o banco de dados:
 Crie um arquivo .env com sua DATABASE_URL do PostgreSQL:
 
-env
-Copiar
-Editar
+```env
 DATABASE_URL=postgresql://usuario:senha@host:porta/nome_do_banco?sslmode=require
+```
+
 4. Execute as migrações e gere o client:
-bash
-Copiar
-Editar
+```bash
 npx prisma generate
 npx prisma migrate deploy
+```
+
 5. Inicie o servidor:
-bash
-Copiar
-Editar
+```bash
 npm run start:dev
+```
 O backend estará em http://localhost:3000
 
 💻 Frontend (React + Vite)
 1. Acesse o diretório:
-bash
-Copiar
-Editar
+```bash
 cd ../g1-frontend-coffee-delivery
+```
 2. Instale as dependências:
-bash
-Copiar
-Editar
+```bash
 npm install
+```
 3. Ajuste a URL base da API:
 No arquivo src/serves/api.ts, altere a URL para:
 
-ts
-Copiar
-Editar
+```ts
 export const api = axios.create({
   baseURL: 'http://localhost:3000',
 })
+```
+
 4. Inicie a aplicação:
-bash
-Copiar
-Editar
+```bash
 npm run dev
+```
 O front-end estará em http://localhost:5173
 
 📘 Funcionalidades
@@ -134,18 +132,16 @@ POST /checkout
 Você pode testar todos os endpoints com o Insomnia ou Postman.
 Exemplo para listar cafés:
 
+```
 bash
-Copiar
-Editar
 GET http://localhost:3000/coffees
+```
 📁 Estrutura de Pastas
-bash
-Copiar
-Editar
+```bash
 coffee-delivery/
 ├── g1-frontend-coffee-delivery/   # Front-end React
 └── g2-backend-coffee-delivery/    # Back-end NestJS
-✅ Entrega
+```
 O projeto está organizado em monorepo com os dois projetos integrados, pronto para ser testado de ponta a ponta com dados reais da API.
 
 🧠 Autor
